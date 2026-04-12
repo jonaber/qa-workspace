@@ -1,7 +1,7 @@
 <?php
 
 $pageTitle = 'Core Web Vitals - Lighthouse Metrics';
-$pageHeading = 'Core Web Vitals';
+$pageHeading = 'QA Workspace';
 $activePage = 'core-web-vitals';
 $pageScripts = ['assets/js/lighthouse.js'];
 $pageExternalScripts = ['https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js'];

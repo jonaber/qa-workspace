@@ -13,9 +13,19 @@ $menuItems = [
         'href' => 'index.php'
     ],
     [
+        'key' => 'websites',
+        'label' => 'Websites',
+        'href' => 'websites.php'
+    ],
+    [
         'key' => 'core-web-vitals',
         'label' => 'Core Web Vitals',
         'href' => 'lighthouse.php'
+    ],
+    [
+        'key' => 'crux-details',
+        'label' => 'CRUX Details',
+        'href' => 'crux-details.php'
     ]
 ];
 ?>
@@ -29,7 +39,7 @@ $menuItems = [
 </head>
 <body>
     <header class="site-header">
-        <h1><?php echo htmlspecialchars($pageHeading, ENT_QUOTES, 'UTF-8'); ?></h1>
+        <h1>QA Workspace</h1>
         <a class="icon-button" href="settings.php" aria-label="Open settings" title="Settings">⚙</a>
     </header>
 
