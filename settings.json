@@ -1,0 +1,15 @@
+{
+    "lighthouseApiToken": "xbO07V3SPIcoMNlaMjZzBwL2cwcre42P",
+    "lighthouseMonitorEndpoints": "https://api.lighthouse-metrics.com/v1/lighthouse/monitors",
+    "lighthouseRunsEndpoint": "https://api.lighthouse-metrics.com /v1/lighthouse/monitors/:monitorId/runs",
+    "lighthouseRunsValueEndpoint": "https://api.lighthouse-metrics.com/v1/lighthouse/runs/:runId",
+    "dataStorage": "/lighthouse_data.json",
+    "dbHost": "127.0.0.1",
+    "dbPort": 3306,
+    "dbName": "lighthouse",
+    "dbUser": "root",
+    "dbPassword": "",
+    "scoreAmber": 80,
+    "scoreRed": 50,
+    "scoreGreen": 100
+}

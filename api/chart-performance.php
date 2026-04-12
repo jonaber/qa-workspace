@@ -1,0 +1,40 @@
+<?php
+
+declare(strict_types=1);
+
+require __DIR__ . '/lighthouse-common.php';
+
+lighthouse_assert_method(['GET']);
+
+$settings = lighthouse_load_settings();
+$pdo = lighthouse_db_initialize($settings);
+
+$statement = $pdo->query(
+    'SELECT url,
+            ROUND(AVG(performance), 1) AS avg_performance,
+            COUNT(*) AS run_count
+     FROM ' . LIGHTHOUSE_TABLE_RUN_VALUES . '
+     WHERE url IS NOT NULL AND performance IS NOT NULL
+     GROUP BY url
+     ORDER BY avg_performance DESC'
+);
+
+$rows = $statement->fetchAll();
+
+$labels = [];
+$values = [];
+$runCounts = [];
+
+foreach ($rows as $row) {
+    $labels[] = (string)($row['url'] ?? '');
+    $values[] = (float)$row['avg_performance'];
+    $runCounts[] = (int)$row['run_count'];
+}
+
+lighthouse_send_json(200, [
+    'success' => true,
+    'labels' => $labels,
+    'values' => $values,
+    'runCounts' => $runCounts,
+    'total' => count($rows)
+]);

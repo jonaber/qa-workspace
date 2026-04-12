@@ -1,0 +1,253 @@
+:root {
+    --bg: #f4f6f8;
+    --surface: #ffffff;
+    --text: #1f2933;
+    --muted: #52606d;
+    --border: #d9e2ec;
+    --accent: #0f766e;
+    --accent-hover: #115e59;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    background: linear-gradient(180deg, #f8fafc 0%, #eef2f5 100%);
+    min-height: 100vh;
+}
+
+.site-header {
+    height: 64px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--surface);
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.icon-button {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    color: var(--text);
+    background-color: #f1f5f9;
+    border: 1px solid var(--border);
+}
+
+.icon-button:hover {
+    background-color: #e2e8f0;
+}
+
+.app-shell {
+    min-height: calc(100vh - 64px);
+    display: grid;
+    grid-template-columns: 240px 1fr;
+}
+
+.side-menu {
+    border-right: 1px solid var(--border);
+    background-color: #f8fafc;
+    padding: 1rem 0.75rem;
+}
+
+.menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.4rem;
+}
+
+.menu-link {
+    display: block;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    border: 1px solid transparent;
+}
+
+.menu-link:hover {
+    background-color: #eaf2f2;
+    border-color: #cbe7e4;
+}
+
+.menu-link.is-active {
+    background-color: #d8f3ef;
+    border-color: #80d5cb;
+    font-weight: 600;
+}
+
+.main-content {
+    padding: 1.5rem;
+}
+
+.content-panel {
+    min-height: 220px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.cwv-panel {
+    padding: 1rem;
+}
+
+.cwv-panel h2 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.cwv-panel p {
+    margin: 0.75rem 0 0;
+    color: var(--muted);
+}
+
+.cwv-actions {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.action-button {
+    border: 0;
+    border-radius: 8px;
+    padding: 0.65rem 1rem;
+    color: #fff;
+    background-color: var(--accent);
+    cursor: pointer;
+    font: inherit;
+}
+
+.action-button:hover {
+    background-color: var(--accent-hover);
+}
+
+.action-button:disabled {
+    background-color: #97aaa7;
+    cursor: not-allowed;
+}
+
+.status-message.is-error {
+    color: #b42318;
+}
+
+.settings-form {
+    display: grid;
+    gap: 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    max-width: 760px;
+}
+
+.settings-form label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.settings-form input,
+.settings-form textarea,
+.settings-form button {
+    font: inherit;
+}
+
+.settings-form input,
+.settings-form textarea {
+    width: 100%;
+    border: 1px solid #bcccdc;
+    border-radius: 8px;
+    padding: 0.6rem 0.7rem;
+    background-color: #fff;
+}
+
+.settings-form button {
+    margin-top: 0.5rem;
+    justify-self: start;
+    border: 0;
+    border-radius: 8px;
+    padding: 0.65rem 1rem;
+    color: #fff;
+    background-color: var(--accent);
+    cursor: pointer;
+}
+
+.settings-form button:hover {
+    background-color: var(--accent-hover);
+}
+
+.settings-fieldset {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.settings-fieldset legend {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0 0.25rem;
+}
+
+.settings-fieldset-hint {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--muted);
+}
+
+.status-message {
+    min-height: 1.2rem;
+    margin: 0.25rem 0 0;
+    color: var(--muted);
+}
+
+.chart-panel-section {
+    margin-top: 1rem;
+}
+
+.chart-wrapper {
+    position: relative;
+    margin-top: 1rem;
+    height: 500px;
+    width: 100%;
+}
+
+@media (max-width: 640px) {
+    .app-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .side-menu {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+        padding: 0.75rem;
+    }
+
+    .menu-list {
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(180px, 1fr);
+        overflow-x: auto;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+}
