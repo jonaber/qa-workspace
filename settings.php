@@ -20,9 +20,6 @@ require __DIR__ . '/includes/layout-top.php';
     <label for="lighthouseRunsValueEndpoint">Lighthouse runs value endpoint</label>
     <input id="lighthouseRunsValueEndpoint" name="lighthouseRunsValueEndpoint" type="text" />
 
-    <label for="dataStorage">Data storage</label>
-    <input id="dataStorage" name="dataStorage" type="text" placeholder="mysql" />
-
     <fieldset class="settings-fieldset">
         <legend>Performance Score Thresholds</legend>
         <p class="settings-fieldset-hint">Scores above the amber threshold are green. Scores at or below amber but above red are amber. Scores at or below the red threshold are red.</p>

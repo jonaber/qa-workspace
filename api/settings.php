@@ -10,7 +10,6 @@ $defaultSettings = [
     'lighthouseMonitorEndpoints' => '',
     'lighthouseRunsEndpoint' => '',
     'lighthouseRunsValueEndpoint' => '',
-    'dataStorage' => 'mysql',
     'dbHost' => '127.0.0.1',
     'dbPort' => 3306,
     'dbName' => 'lighthouse',
@@ -45,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         'lighthouseMonitorEndpoints' => (string)($merged['lighthouseMonitorEndpoints'] ?? ''),
         'lighthouseRunsEndpoint' => (string)($merged['lighthouseRunsEndpoint'] ?? ''),
         'lighthouseRunsValueEndpoint' => (string)($merged['lighthouseRunsValueEndpoint'] ?? ''),
-        'dataStorage' => (string)($merged['dataStorage'] ?? 'mysql'),
         'scoreAmber' => (int)($merged['scoreAmber'] ?? 50),
         'scoreRed' => (int)($merged['scoreRed'] ?? 25)
     ];
@@ -96,7 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'lighthouseMonitorEndpoints' => trim($monitorEndpoint),
         'lighthouseRunsEndpoint' => (string)($decodedInput['lighthouseRunsEndpoint'] ?? ''),
         'lighthouseRunsValueEndpoint' => (string)($decodedInput['lighthouseRunsValueEndpoint'] ?? ''),
-        'dataStorage' => (string)($decodedInput['dataStorage'] ?? 'mysql'),
         'scoreAmber' => $scoreAmber,
         'scoreRed' => $scoreRed
     ]);

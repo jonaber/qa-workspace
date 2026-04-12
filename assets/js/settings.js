@@ -20,7 +20,6 @@ async function loadSettings() {
             : (settings.lighthouseMonitorEndpoints ?? '');
         form.lighthouseRunsEndpoint.value = settings.lighthouseRunsEndpoint ?? '';
         form.lighthouseRunsValueEndpoint.value = settings.lighthouseRunsValueEndpoint ?? '';
-        form.dataStorage.value = settings.dataStorage ?? '';
         form.scoreAmber.value = settings.scoreAmber ?? 50;
         form.scoreRed.value = settings.scoreRed ?? 25;
     } catch (error) {
@@ -37,7 +36,6 @@ form.addEventListener('submit', async (event) => {
         lighthouseMonitorEndpoints: form.lighthouseMonitorEndpoints.value.trim(),
         lighthouseRunsEndpoint: form.lighthouseRunsEndpoint.value.trim(),
         lighthouseRunsValueEndpoint: form.lighthouseRunsValueEndpoint.value.trim(),
-        dataStorage: form.dataStorage.value.trim(),
         scoreAmber: Number(form.scoreAmber.value) || 50,
         scoreRed: Number(form.scoreRed.value) || 25
     };
