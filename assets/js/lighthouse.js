@@ -76,6 +76,7 @@ async function runAction(button) {
         renderStatus(`${result.message || 'Completed successfully.'}${suffix}`);
 
         if (endpoint.includes('fetch-run-values')) {
+            showLastFetchTimestamp();
             loadPerformanceChart();
         }
     } catch (error) {
@@ -187,4 +188,23 @@ async function loadPerformanceChart() {
     }
 }
 
+async function showLastFetchTimestamp() {
+    const el = document.getElementById('last-fetch-timestamp');
+    if (!el) {
+        return;
+    }
+    try {
+        const response = await fetch('api/settings.php');
+        const data = await response.json();
+        const ts = data.lastFetchRunValuesAt || '';
+        if (ts) {
+            const formatted = new Date(ts).toLocaleString();
+            el.textContent = `Last run values fetch: ${formatted}`;
+        }
+    } catch (_) {
+        // non-critical, ignore
+    }
+}
+
+showLastFetchTimestamp();
 loadPerformanceChart();

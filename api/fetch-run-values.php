@@ -22,6 +22,10 @@ $prunedCount = lighthouse_db_prune_stale_run_values($pdo);
 $missingRunIds = lighthouse_filter_uuid_ids(lighthouse_db_get_missing_run_value_ids($pdo));
 
 if ($missingRunIds === []) {
+    $currentSettings = lighthouse_load_settings();
+    $currentSettings['lastFetchRunValuesAt'] = gmdate('c');
+    file_put_contents(LIGHTHOUSE_SETTINGS_FILE, json_encode($currentSettings, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES), LOCK_EX);
+
     lighthouse_send_json(200, [
         'success' => true,
         'message' => 'Run values are already up to date',
@@ -51,6 +55,10 @@ foreach ($missingRunIds as $runId) {
 $insertedCount = lighthouse_db_insert_run_values_from_responses($pdo, $runValuesPayload);
 
 $successCalls = count(array_filter($runValuesPayload, static fn (array $item): bool => (bool)($item['ok'] ?? false)));
+
+$currentSettings = lighthouse_load_settings();
+$currentSettings['lastFetchRunValuesAt'] = gmdate('c');
+file_put_contents(LIGHTHOUSE_SETTINGS_FILE, json_encode($currentSettings, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES), LOCK_EX);
 
 lighthouse_send_json(200, [
     'success' => true,

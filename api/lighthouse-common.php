@@ -7,6 +7,12 @@ const LIGHTHOUSE_TABLE_MONITORS = 'lighthouse_monitors';
 const LIGHTHOUSE_TABLE_RUNS = 'lighthouse_runs';
 const LIGHTHOUSE_TABLE_RUN_VALUES = 'lighthouse_run_values';
 
+const LIGHTHOUSE_DB_HOST = '127.0.0.1';
+const LIGHTHOUSE_DB_PORT = 3306;
+const LIGHTHOUSE_DB_NAME = 'lighthouse';
+const LIGHTHOUSE_DB_USER = 'root';
+const LIGHTHOUSE_DB_PASSWORD = '';
+
 function lighthouse_send_json(int $statusCode, array $payload): void
 {
     http_response_code($statusCode);
@@ -154,24 +160,24 @@ function lighthouse_filter_uuid_ids(array $ids): array
     ));
 }
 
-function lighthouse_database_settings(array $settings): array
+function lighthouse_database_settings(): array
 {
-    $host = trim((string)($settings['dbHost'] ?? '127.0.0.1'));
-    $port = (int)($settings['dbPort'] ?? 3306);
-    $name = trim((string)($settings['dbName'] ?? 'lighthouse'));
-    $user = (string)($settings['dbUser'] ?? 'root');
-    $password = (string)($settings['dbPassword'] ?? '');
+    $host = trim((string) LIGHTHOUSE_DB_HOST);
+    $port = (int) LIGHTHOUSE_DB_PORT;
+    $name = trim((string) LIGHTHOUSE_DB_NAME);
+    $user = (string) LIGHTHOUSE_DB_USER;
+    $password = (string) LIGHTHOUSE_DB_PASSWORD;
 
     if ($host === '' || $name === '') {
-        lighthouse_send_json(400, ['error' => 'Database settings are incomplete']);
+        lighthouse_send_json(500, ['error' => 'Database settings are incomplete']);
     }
 
     if ($port <= 0 || $port > 65535) {
-        lighthouse_send_json(400, ['error' => 'dbPort must be between 1 and 65535']);
+        lighthouse_send_json(500, ['error' => 'dbPort must be between 1 and 65535']);
     }
 
     if (preg_match('/^[A-Za-z0-9_]+$/', $name) !== 1) {
-        lighthouse_send_json(400, ['error' => 'dbName can only contain letters, numbers, and underscores']);
+        lighthouse_send_json(500, ['error' => 'dbName can only contain letters, numbers, and underscores']);
     }
 
     return [
@@ -211,7 +217,7 @@ function lighthouse_db_connect(array $settings): PDO
         lighthouse_send_json(500, ['error' => 'PDO MySQL driver is not available']);
     }
 
-    $db = lighthouse_database_settings($settings);
+    $db = lighthouse_database_settings();
     $bootstrapDsn = sprintf('mysql:host=%s;port=%d;charset=utf8mb4', $db['host'], $db['port']);
     $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s;charset=utf8mb4', $db['host'], $db['port'], $db['name']);
 

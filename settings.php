@@ -7,7 +7,10 @@ $pageScripts = ['assets/js/settings.js'];
 
 require __DIR__ . '/includes/layout-top.php';
 ?>
-<form id="settings-form" class="settings-form">
+<section class="content-panel">
+    <div class="cwv-panel">
+        <h2>Settings</h2>
+        <form id="settings-form" class="settings-form">
     <label for="lighthouseApiToken">Lighthouse API token</label>
     <input id="lighthouseApiToken" name="lighthouseApiToken" type="password" autocomplete="off" />
 
@@ -31,5 +34,7 @@ require __DIR__ . '/includes/layout-top.php';
 
     <button type="submit">Save settings</button>
     <p id="status-message" class="status-message" aria-live="polite"></p>
-</form>
+        </form>
+    </div>
+</section>
 <?php require __DIR__ . '/includes/layout-bottom.php';

@@ -10,5 +10,6 @@
     "dbPassword": "",
     "scoreAmber": 80,
     "scoreRed": 50,
-    "scoreGreen": 100
+    "scoreGreen": 100,
+    "lastFetchRunValuesAt": "2026-04-13T12:41:03+00:00"
 }

@@ -56,7 +56,7 @@ form.addEventListener('submit', async (event) => {
 
         setStatus('Settings saved successfully.');
     } catch (error) {
-        setStatus('Unable to save settings.', true);
+        setStatus(error.message || 'Unable to save settings.', true);
     }
 });
 

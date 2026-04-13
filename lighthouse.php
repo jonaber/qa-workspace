@@ -26,13 +26,14 @@ require __DIR__ . '/includes/layout-top.php';
 		</div>
 
 		<p id="cwv-status" class="status-message" aria-live="polite"></p>
+		<p id="last-fetch-timestamp" class="status-message"></p>
 	</div>
 </section>
 
 <section class="content-panel chart-panel-section">
 	<div class="cwv-panel">
-		<h2>Average Performance by URL</h2>
-		<p>Average Lighthouse performance score per monitored URL, calculated across all stored run values.</p>
+		<h2>1 Week Average Performance by URL</h2>
+		<p>Average Lighthouse performance score per monitored URL, calculated across run values from the last 7 days.</p>
 		<div class="chart-wrapper">
 			<canvas id="performance-chart" aria-label="Average performance score by URL"></canvas>
 		</div>

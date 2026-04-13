@@ -10,11 +10,6 @@ $defaultSettings = [
     'lighthouseMonitorEndpoints' => '',
     'lighthouseRunsEndpoint' => '',
     'lighthouseRunsValueEndpoint' => '',
-    'dbHost' => '127.0.0.1',
-    'dbPort' => 3306,
-    'dbName' => 'lighthouse',
-    'dbUser' => 'root',
-    'dbPassword' => '',
     'scoreAmber' => 50,
     'scoreRed' => 25
 ];
@@ -45,7 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         'lighthouseRunsEndpoint' => (string)($merged['lighthouseRunsEndpoint'] ?? ''),
         'lighthouseRunsValueEndpoint' => (string)($merged['lighthouseRunsValueEndpoint'] ?? ''),
         'scoreAmber' => (int)($merged['scoreAmber'] ?? 50),
-        'scoreRed' => (int)($merged['scoreRed'] ?? 25)
+        'scoreRed' => (int)($merged['scoreRed'] ?? 25),
+        'lastFetchRunValuesAt' => (string)($merged['lastFetchRunValuesAt'] ?? '')
     ];
 
     sendResponse(200, $publicSettings);
@@ -98,10 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'scoreRed' => $scoreRed
     ]);
 
-    $settings['dbPort'] = (int)($settings['dbPort'] ?? 3306);
-    if ($settings['dbPort'] <= 0 || $settings['dbPort'] > 65535) {
-        sendResponse(400, ['error' => 'settings.json contains invalid dbPort']);
-    }
+    unset($settings['dbHost'], $settings['dbPort'], $settings['dbName'], $settings['dbUser'], $settings['dbPassword']);
 
     $saved = file_put_contents(
         $settingsFile,

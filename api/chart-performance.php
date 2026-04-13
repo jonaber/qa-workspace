@@ -15,6 +15,7 @@ $statement = $pdo->query(
             COUNT(*) AS run_count
      FROM ' . LIGHTHOUSE_TABLE_RUN_VALUES . '
      WHERE url IS NOT NULL AND performance IS NOT NULL
+       AND created_at_ms >= (UNIX_TIMESTAMP() - 7 * 86400) * 1000
      GROUP BY url
      ORDER BY avg_performance DESC'
 );

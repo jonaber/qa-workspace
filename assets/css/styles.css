@@ -150,11 +150,8 @@ body {
 .settings-form {
     display: grid;
     gap: 0.75rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1rem;
     max-width: 760px;
+    margin-top: 1.5rem;
 }
 
 .settings-form label {
