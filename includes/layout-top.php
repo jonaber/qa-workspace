@@ -26,6 +26,11 @@ $menuItems = [
         'key' => 'crux-details',
         'label' => 'CRUX Details',
         'href' => 'crux-details.php'
+    ],
+    [
+        'key' => 'risk-monitoring',
+        'label' => 'Risk Monitoring Report',
+        'href' => 'risk-monitoring.php'
     ]
 ];
 ?>

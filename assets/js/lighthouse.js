@@ -159,7 +159,15 @@ async function loadPerformanceChart() {
                     tooltip: {
                         callbacks: {
                             title: (items) => result.labels[items[0].dataIndex],
-                            afterLabel: (item) => `Runs averaged: ${result.runCounts[item.dataIndex]}`
+                            afterLabel: (item) => {
+                                const lines = [];
+                                const region = result.regions?.[item.dataIndex];
+                                if (region) {
+                                    lines.push(`Region: ${region}`);
+                                }
+                                lines.push(`Runs averaged: ${result.runCounts[item.dataIndex]}`);
+                                return lines.join('\n');
+                            }
                         }
                     }
                 },

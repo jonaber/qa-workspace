@@ -2,6 +2,21 @@ const websitesList = document.getElementById('websites-list');
 const websitesStatus = document.getElementById('websites-status');
 const exportButton = document.getElementById('export-csv');
 
+// Tab switching
+document.querySelectorAll('.tab-button').forEach((button) => {
+    button.addEventListener('click', () => {
+        document.querySelectorAll('.tab-button').forEach((b) => {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.tab-panel').forEach((p) => p.classList.add('is-hidden'));
+
+        button.classList.add('is-active');
+        button.setAttribute('aria-selected', 'true');
+        document.getElementById('tab-' + button.dataset.tab).classList.remove('is-hidden');
+    });
+});
+
 function renderStatus(message, isError = false) {
     websitesStatus.textContent = message;
     websitesStatus.classList.toggle('is-error', isError);

@@ -227,6 +227,45 @@ body {
     width: 100%;
 }
 
+.tab-nav {
+    display: flex;
+    gap: 0.25rem;
+    margin-top: 1rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.tab-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    border-radius: 4px 4px 0 0;
+}
+
+.tab-button:hover {
+    color: var(--text);
+    background-color: #f1f5f9;
+}
+
+.tab-button.is-active {
+    color: var(--accent);
+    font-weight: 600;
+    border-bottom-color: var(--accent);
+}
+
+.tab-panel {
+    padding-top: 1rem;
+}
+
+.tab-panel.is-hidden {
+    display: none;
+}
+
 .websites-toolbar {
     margin-top: 1rem;
     display: flex;
