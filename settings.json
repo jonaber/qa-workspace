@@ -3,13 +3,9 @@
     "lighthouseMonitorEndpoints": "https://api.lighthouse-metrics.com/v1/lighthouse/monitors",
     "lighthouseRunsEndpoint": "https://api.lighthouse-metrics.com /v1/lighthouse/monitors/:monitorId/runs",
     "lighthouseRunsValueEndpoint": "https://api.lighthouse-metrics.com/v1/lighthouse/runs/:runId",
-    "dbHost": "127.0.0.1",
-    "dbPort": 3306,
-    "dbName": "lighthouse",
-    "dbUser": "root",
-    "dbPassword": "",
+    "uploadToken": "123456789",
     "scoreAmber": 80,
     "scoreRed": 50,
     "scoreGreen": 100,
-    "lastFetchRunValuesAt": "2026-04-13T12:41:03+00:00"
+    "lastFetchRunValuesAt": "2026-04-14T12:03:25+00:00"
 }
